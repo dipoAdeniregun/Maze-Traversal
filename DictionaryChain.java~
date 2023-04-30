@@ -1,0 +1,96 @@
+public class DictionaryChain{
+  public LinkedList[] dict;
+  public int count;
+  
+  //constructor
+  public DictionaryChain(int size){
+    size = getNextPrime(size);
+    dict = new LinkedList [size];
+    count = 0;
+  }
+  
+  //insert
+  public void insert(String newItem){
+    if(!search(newItem)){
+      int key = getHashValue(lookup.toLowerCase(),dict.length);
+      dict[key].insert(newItem);
+      count++;
+    }
+  }
+  
+  //search
+  public boolean search(String lookup){
+    int key = getHashValue(lookup.toLowerCase(),dict.length);
+    boolean found = dict[key].search(lookup);
+    return found;
+  }
+  
+  /******************************HELPER METHODS***********************************/
+  private boolean isPrime(int p){
+    boolean prime = true;
+    for(int i = 2; (i*i <= p)&& prime; i++){
+      if(p%i == 0)
+        prime = false;
+    }
+    return prime;
+  }
+  
+  private int getNextPrime(int p){
+    int nextPrime = p;
+    while(!isPrime(nextPrime)){
+      nextPrime++;
+    }
+    return nextPrime;
+  }
+  
+  public static int getHashValue(String in, int hashArraySize){
+      int hashValue = 0;
+      int a = 27;
+      
+      
+      for(char c: in.toCharArray()){
+         hashValue = (hashValue*a) % hashArraySize;
+         hashValue += (((int) c ) - 97) % hashArraySize;
+      }
+      return hashValue%hashArraySize;
+  }
+}
+
+class LinkedList{
+  public Node top;
+  
+  //constructor
+  public LinkedList(){
+    top = null;
+  }
+  
+  //insert new string
+  public void add(String newItem){
+    top = new Node(newItem, top);
+  }
+  
+  //search for a string
+  public boolean search(String lookup){
+    boolean found = false;
+    Node current = top;
+    
+    while(current != null && !found){
+      if(current.data.equals(lookup)){
+        found = true;
+      }
+      current = current.next;
+    }
+    return found;
+  }
+}
+
+class Node{
+  public String data;
+  public Node next;
+  
+  //constructor
+  public Node(String data, Node next){
+    this.data = data;
+    this.next = next;
+  }
+}

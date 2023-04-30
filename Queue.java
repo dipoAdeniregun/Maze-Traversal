@@ -1,0 +1,53 @@
+//class Queue{
+//   public Node end;
+//   public Node top;
+//   
+//   //constructor
+//   public Queue(){
+//      top = null;
+//      end = null;
+//   }//Queue
+//   
+//   //enter queue
+//   public void enqueue(Position c){
+//     if(top == null){
+//       Node temp = new Node(c,null);
+//       end = temp;
+//       top = temp;
+//     }
+//     else{
+//       Node temp = new Node(c,null);
+//       end.next = temp;
+//       end = temp;
+//     }
+//   }//enqueue
+//   
+//   //delete from queue
+//   public Position dequeue(){
+//      Node removedNode ;
+//      Position deleted = null;
+//      if(top != null){
+//         removedNode = top;
+//         deleted = removedNode.c;
+//         top = top.next;
+//      }//endif
+//      //System.out.println(deleted);
+//      return deleted;
+//   }//dequeue
+//   
+//   //peek
+//   public Position peek(){
+//     Position c = null;
+//     if(top != null)
+//      c = top.c;
+//     return c;
+//   }//endpeek
+//   
+//   //isEMpty
+//   public boolean isEmpty(){
+//     return ((top == null));
+//   }//isEMpty
+//}//Queue
+//
+//
+//    
